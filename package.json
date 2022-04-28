@@ -21,7 +21,7 @@
     "64",
     "napi"
   ],
-  "version": "3.0.3",
+  "version": "3.0.4",
   "license": "MIT",
   "author": "Anna Henningsen <anna@addaleax.net>",
   "repository": {
@@ -34,10 +34,12 @@
     "test": "nyc mocha --expose-gc",
     "install": "node-gyp-build",
     "prebuild": "prebuildify --napi --tag-armv",
+    "prebuild:arm": "env-cmd -f arm.env prebuildify --napi --arch arm",
     "prepack": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '5' ] || (echo 'Some prebuilds are missing'; exit 1))"
   },
   "dependencies": {
     "debug": "^4.1.1",
+    "env-cmd": "^10.1.0",
     "get-symbol-from-current-process-h": "^1.0.2",
     "node-addon-api": "^3.0.0",
     "node-gyp-build": "^4.2.1"
